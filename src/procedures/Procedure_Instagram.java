@@ -1,9 +1,7 @@
 package procedures;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
-
-import functions.Function_Buffered_Reader_Website;
+import functions.Function_Instagram;
 
 /*
  * DATE: 
@@ -27,22 +25,26 @@ public class Procedure_Instagram {
 		
 		try {
 			
-			//OPEN connection
+			//GET site_content
+			System.out.println("Start explore "+url_instagram_profile);
 			String site_content = null;
-			site_content = Function_Buffered_Reader_Website.get_site_content(url_instagram_profile);
+			site_content = Function_Instagram.get_site_content(url_instagram_profile);
 			
-			//SEARCH all images
+			//GET all images
+			System.out.println("GET all images");
 			ArrayList<String> list_of_images = new ArrayList<String>();
-			Function_Buffered_Reader_Website.get_all_images(site_content);
+			list_of_images = Function_Instagram.get_all_images(site_content);
 			
-			System.out.println("Here all saved images");
 			//SAVE all images
-			
-			Function_Buffered_Reader_Website.save_images(list_of_images);
+			System.out.println("SAVE all images");			
+			Function_Instagram.save_images(list_of_images);
 			
 			//SEARCH linked profiles
 			
 			//SAVE linked profiles
+			
+			//END
+			System.out.println("EXPLORATION DONE for "+url_instagram_profile);	
 			
 		} catch (Exception e) {
 			e.printStackTrace();
