@@ -1,7 +1,9 @@
 package agents;
 
 import java.util.ArrayList;
+
 import functions.Function_Buffered_Reader_Website;
+import procedures.Procedure_Instagram;
 
 /*
  * DATE: 
