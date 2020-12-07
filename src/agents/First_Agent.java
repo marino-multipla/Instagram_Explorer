@@ -4,7 +4,7 @@ import procedures.Procedure_Instagram;
 
 /*
  * DATE: 
- * 29/11/2020
+ * 07/12/2020
  * AUTHOR: 
  * marino-multipla
  * DESCRIPTION: 
@@ -18,11 +18,11 @@ public class First_Agent {
 		try {
 
 			//SET instagram profile
-			//String url_instagram_profile = "https://www.instagram.com/cristiano/";
-			String url_instagram_profile = "https://www.instagram.com/francescototti/";
-
+			//String profile_name = "valentinaferragni";
+			String profile_name = "marcobianchioff";
+			
 			//CALL explore procedure
-			Procedure_Instagram.explore(url_instagram_profile);
+			Procedure_Instagram.explore(profile_name);
 						
 		} catch (Exception e) {
 			e.printStackTrace();
