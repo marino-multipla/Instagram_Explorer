@@ -1,7 +1,7 @@
 # Instagram_Explorer
 It is an agent that is able to navigate through Instagram profiles autonomously,
 without authentication.
-During the exploration all images of the instagram profile are saved.
+During the exploration all images of the instagram profiles are saved.
 There are three ways of exploration:
 
 - Start from the first inserted profile and explore by related profiles;
