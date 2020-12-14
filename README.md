@@ -11,6 +11,9 @@ or from a owner_id inserted by the user;
 
 Instagram  can block you during the exploration process because of 
 an high amount of web requests.
-A mechanism to renew the ip address of your ISP is implemented.
+Some procedures to renew the ip address of your ISP are implemented:
+ - Automatic renew in case of Mobile ISP connected using Android SmarthPhone;
+ - Automatic renew in case of Fiber connection using a Technicolor Router;
+ - Manual ip address renewal;
  
- - A short video will be available in some days...
+ A short video will be available in some days...
