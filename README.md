@@ -9,8 +9,8 @@ There are three ways of exploration:
 - Collect a list of user_name - owner_id starting from the last collected owner_id
 or from a owner_id inserted by the user;
 
-Instagram  can block you during the exploration process bacuse of 
-a high amount of web requests.
+Instagram  can block you during the exploration process because of 
+an high amount of web requests.
 A mechanism to renew the ip address of your ISP is implemented.
  
  - A short video will be available in some days...
