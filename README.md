@@ -17,3 +17,6 @@ Some procedures to renew the ip address of your ISP are implemented:
  - Manual ip address renewal;
  
  A short video will be available in some days...
+ <video width="320" height="240" controls>
+  <source src="video.mov" type="video/mp4">
+</video>
