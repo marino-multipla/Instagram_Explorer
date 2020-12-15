@@ -16,4 +16,4 @@ Some procedures to renew the ip address of your ISP are implemented:
  - Automatic renew in case of Fiber connection using a Technicolor Router;
  - Manual ip address renewal;
  
-[![Watch the video demo](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/ASY8KK9a5Vg)
+[![Watch the video demo](preview_demo.png)](https://youtu.be/ASY8KK9a5Vg)
