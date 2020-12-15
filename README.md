@@ -18,5 +18,5 @@ Some procedures to renew the ip address of your ISP are implemented:
  
  A short video will be available in some days...
  <video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
+  <source src="Instagram_Explorer%20demo.mp4" type="video/mp4">Video
 </video>
