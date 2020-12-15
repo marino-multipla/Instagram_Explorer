@@ -5,7 +5,7 @@ import procedures.Procedure_Instagram;
 
 /*
  * DATE: 
- * 14/12/2020
+ * 15/12/2020
  * AUTHOR: 
  * marino-multipla
  * DESCRIPTION: 
@@ -20,7 +20,7 @@ public class First_Agent {
 	 * ###############################################################################
 	 */
 
-	private static final String Instagram_Explorer_version = "14/12/2020 17:22";
+	private static final String Instagram_Explorer_version = "15/12/2020 10:59";
 
 	/*
 	 * ###############################################################################

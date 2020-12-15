@@ -9,7 +9,7 @@ import functions.Functions_ISP;
 
 /*
  * DATE: 
- * 14/12/2020
+ * 15/12/2020
  * AUTHOR: 
  * marino-multipla
  * DESCRIPTION: 
@@ -27,7 +27,15 @@ public class Procedure_Instagram {
 	private static final String class_name = "Procedure_Instagram";
 	private static final int max_images_to_save = 1;
 	private static final int max_profiles_to_explore = 50000000;
-	
+
+	/*
+	 * This variable is used to alert the admin if a
+	 * number X of consecutive renew_isp_ip are
+	 * detected; That means a problem during the isp renew process;
+	 */
+	private static int number_of_consecutive_renew_isp_ip = 0;
+	private static final int max_number_of_consecutive_renew_isp_ip = 20;
+
 	/*
 	 * This variable is used to choose the type of
 	 * isp to use;
@@ -109,6 +117,8 @@ public class Procedure_Instagram {
 					profile_site_content = Function_Instagram.get_site_content(url_instagram_profile);
 
 					check_result = check_result_get_site_content(profile_site_content);
+
+					check_number_consecutive_renew_isp_ip();
 
 					if(check_result == 0){
 						i--;
@@ -209,6 +219,8 @@ public class Procedure_Instagram {
 				try{
 					progressive_owner_id++;
 
+					check_number_consecutive_renew_isp_ip();
+
 					if(Function_Instagram.renew_isp_ip == true){
 						renew_isp_ip();
 						i--;
@@ -246,11 +258,11 @@ public class Procedure_Instagram {
 
 		//DECLARE variables
 		String method_name = null;
-		
+
 		try {
 
 			method_name = "collect_usernames_owner_ids";
-			
+
 			System.out.println("collect_usernames_owner_ids");
 			System.out.println("#################################");
 			System.out.println();
@@ -297,11 +309,8 @@ public class Procedure_Instagram {
 
 			for(int i=0; i<max_profiles_to_explore; i++){
 				try{
-					/*
-					if(Function_Instagram.error_counter > 80){
-						Function_Instagram.play_sound();
-					}
-					 */
+
+					check_number_consecutive_renew_isp_ip();
 
 					if(Function_Instagram.sent_requests > 180 || Function_Instagram.renew_isp_ip == true){
 						renew_isp_ip();
@@ -313,7 +322,7 @@ public class Procedure_Instagram {
 					progressive_owner_id++;
 					//CALL explore procedure
 					Procedure_Instagram.collect_username(progressive_owner_id);
-					
+
 				}catch(Exception e){
 					Controls_Exceptions.report(e, class_name, method_name, "Error during collect username for "+progressive_owner_id);
 					System.err.println();
@@ -339,6 +348,32 @@ public class Procedure_Instagram {
 	 * DECLARE partial procedures of the class
 	 * ###############################################################################
 	 */
+
+	/**
+	 * REQUIRES:
+	 * MODIFIES:
+	 * EFFECTS:
+	 * - It checks the number of consecutive renew of isp ip;
+	 * If it is over the max value, an alert is triggered;
+	 */
+	private static void check_number_consecutive_renew_isp_ip()throws Exception{
+
+		try {
+			if(Function_Instagram.renew_isp_ip == true){
+				number_of_consecutive_renew_isp_ip++;
+				if(number_of_consecutive_renew_isp_ip > max_number_of_consecutive_renew_isp_ip){
+					Function_Instagram.play_sound();	
+				}						
+			}else{
+				number_of_consecutive_renew_isp_ip = 0;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+	}//end of method check_number_consecutive_renew_isp_ip(...)
 
 	/**
 	 * REQUIRES:
@@ -402,7 +437,7 @@ public class Procedure_Instagram {
 				if(last_image_id.equals("-1")){
 					break;
 				}
-				
+
 				try{
 					//LOAD more content
 					site_content = Function_Instagram.load_more_objects(250, owner_id, last_image_id);
@@ -457,14 +492,14 @@ public class Procedure_Instagram {
 
 			//LOAD more content
 			String site_content = Function_Instagram.load_more_objects(12, String.valueOf(owner_id), null);
-			
+
 			int check_result = check_result_get_site_content(site_content);
-			
+
 			if(check_result == 0){
 				Function_Instagram.renew_isp_ip = true;
 				return;
 			}
-			
+
 			//GET username
 			String username = Function_Instagram.get_username(site_content);
 
@@ -473,7 +508,7 @@ public class Procedure_Instagram {
 				//Function_Instagram.save_String("Data/"+owner_id+"/", "graphql_site_content", site_content, false);
 				Function_Instagram.save_String("Data/Lists/", "username-id", username+" - "+owner_id, true);	
 			}else{
-				
+
 				if(site_content.contains("count") == true){
 					username = "[private_profile]";
 					Function_Instagram.save_String("Data/Lists/", "username-id", username+" - "+owner_id, true);
@@ -484,7 +519,7 @@ public class Procedure_Instagram {
 
 			//END
 			System.out.println(Function_Instagram.getTimeNow()+" - EXPLORATION DONE for "+username+" - "+owner_id);
-	
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -546,7 +581,7 @@ public class Procedure_Instagram {
 
 			Function_Instagram.renew_isp_ip = false;
 			System.err.println("Renew ip address");
-			
+
 			if(isp_mode == 0){
 				//CASE when no router is connected
 				System.err.println("You have 40 seconds to renew manually the IP");
@@ -558,7 +593,7 @@ public class Procedure_Instagram {
 				//CASE when you use Technicolor as router
 				Functions_ISP.renew_ip_technicolor_TIM_fibra();
 			}
-			
+
 			//END
 			return 1;
 
