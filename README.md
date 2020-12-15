@@ -16,9 +16,4 @@ Some procedures to renew the ip address of your ISP are implemented:
  - Automatic renew in case of Fiber connection using a Technicolor Router;
  - Manual ip address renewal;
  
- ![](Instagram_Explorer%20demo.mp4)
- 
- A short video will be available in some days...
- <video width="320" height="240" controls>
-  <source src="Instagram_Explorer%20demo.mp4" type="video/mp4">Video
-</video>
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
